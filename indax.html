@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>carding_store</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(120deg,#0f0f1f,#1a1a2f,#0f0f1f);
+  color:#fff;
+}
+.card{
+  max-width:420px;
+  margin:30px auto 120px;
+  background:#0f1220;
+  border-radius:22px;
+  padding:20px;
+  border:2px solid #00e5ff;
+  box-shadow:0 15px 50px rgba(0,200,255,.25);
+  text-align:center;
+}
+
+/* BRAND */
+.brand{font-size:28px;font-weight:900}
+.ahsan{color:#00e5ff}
+.cc{margin:0 5px}
+.shop{color:#ffb300}
+.tag{font-size:12px;color:#aaa;margin-bottom:16px}
+
+/* PLAN BASE */
+.plan{
+  padding:16px;
+  border-radius:18px;
+  margin-bottom:18px;
+  position:relative;
+}
+.price{font-size:26px;font-weight:900;margin-top:14px}
+.balance{font-size:12px;margin-bottom:10px}
+
+/* TAGS */
+.visa-badge{
+  position:absolute;top:10px;right:10px;
+  font-size:11px;font-weight:800;
+  padding:4px 10px;border-radius:12px;
+  background:#0b2a3d;color:#00e5ff;
+}
+.available{
+  position:absolute;top:10px;left:10px;
+  font-size:10px;font-weight:800;
+  padding:4px 10px;border-radius:12px;
+  background:rgba(0,255,120,.15);
+  color:#00ff85;
+}
+.popular{
+  position:absolute;
+  top:-10px;
+  left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(135deg,#ff9800,#ff5722);
+  color:#000;
+  font-size:11px;
+  font-weight:900;
+  padding:4px 14px;
+  border-radius:20px;
+}
+
+/* PLANS */
+.basic{background:#071a28;border:1.5px solid #2c6fa3}
+.normal{background:#071c30;border:2px solid #00c8ff;box-shadow:0 0 22px rgba(0,200,255,.35)}
+.premium{background:#2a1b05;border:2px solid #ffb300}
+.vip{
+  background:linear-gradient(135deg,#1a0f2e,#2d0b45,#1a0f2e);
+  border:2.5px solid #c77dff;
+  box-shadow:0 0 28px rgba(199,125,255,.55);
+}
+.vip-badge{
+  position:absolute;
+  top:-12px;
+  left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(135deg,#c77dff,#7b2cbf);
+  color:#000;
+  font-size:12px;
+  font-weight:900;
+  padding:5px 18px;
+  border-radius:22px;
+}
+
+/* LEGENDARY */
+.legendary{
+  background:linear-gradient(135deg,#0a2a12,#003d1f,#0a2a12);
+  border:3px solid #00ff85;
+  box-shadow:0 0 35px rgba(0,255,133,.65);
+}
+.legendary-badge{
+  position:absolute;
+  top:-14px;
+  left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(135deg,#00ff85,#00c853);
+  color:#002b16;
+  font-size:12px;
+  font-weight:900;
+  padding:6px 20px;
+  border-radius:24px;
+}
+
+/* MEGA */
+.mega{
+  background:linear-gradient(135deg,#2b0000,#5a0000,#2b0000);
+  border:3.5px solid #ff1744;
+  box-shadow:0 0 40px rgba(255,23,68,.7);
+}
+.mega-badge{
+  position:absolute;
+  top:-16px;
+  left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(135deg,#ff5252,#ff1744);
+  color:#1a0000;
+  font-size:13px;
+  font-weight:900;
+  padding:7px 24px;
+  border-radius:26px;
+}
+
+/* MEGA PRO MAX */
+.mega-pro-max{
+  background:linear-gradient(135deg,#000428,#004e92,#000428);
+  border:4px solid #00e5ff;
+  box-shadow:0 0 55px rgba(0,229,255,.85);
+}
+.mega-pro-max-badge{
+  position:absolute;
+  top:-18px;
+  left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(135deg,#00e5ff,#00b0ff);
+  color:#00131a;
+  font-size:14px;
+  font-weight:900;
+  padding:8px 28px;
+  border-radius:30px;
+}
+
+/* CARD */
+.card-info{
+  background:linear-gradient(135deg,#1b1f2e,#0b0e15);
+  border-radius:14px;
+  padding:12px 14px;
+  margin-bottom:12px;
+  text-align:left;
+  position:relative;
+  font-family:"Courier New",monospace;
+}
+.card-info .visa-logo{
+  position:absolute;top:8px;right:10px;
+  font-size:14px;font-weight:900;color:#00e5ff;
+}
+.card-number{font-size:14px;letter-spacing:1.5px;margin-top:18px}
+.card-details{display:flex;justify-content:space-between;font-size:11px;color:#9fdfff}
+
+/* BUTTON */
+button.pay{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:14px;
+  font-weight:900;
+  color:#fff;
+}
+.btn-basic{background:#2c6fa3}
+.btn-normal{background:#008cff}
+.btn-premium{background:#ff9800}
+.btn-vip{background:linear-gradient(135deg,#c77dff,#7b2cbf)}
+.btn-legendary{background:linear-gradient(135deg,#00ff85,#00c853);color:#003b1e}
+.btn-mega{background:linear-gradient(135deg,#ff5252,#ff1744)}
+.btn-mega-pro-max{
+  background:linear-gradient(135deg,#00e5ff,#008cff);
+  color:#00131a;
+}
+
+/* PAYMENT */
+#payment{
+  display:none;
+  padding:18px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#0f1428,#151b35);
+  border:2px solid #00c8ff;
+  box-shadow:0 0 25px rgba(0,200,255,.35),inset 0 0 15px rgba(0,200,255,.15);
+}
+.pay-title{font-size:22px;font-weight:900}
+.pay-instruction{font-size:13px;color:#9fdfff;margin-bottom:8px}
+.amount-box{
+  margin:10px auto 10px;
+  padding:14px;
+  font-size:22px;
+  font-weight:900;
+  border-radius:16px;
+  background:linear-gradient(135deg,#081a2f,#0d2745);
+  border:1.5px solid #00c8ff;
+}
+.timer{font-size:22px;color:#ff5252;margin-bottom:10px}
+.qr img{width:200px;background:#fff;padding:10px;border-radius:16px}
+.actions{display:flex;gap:10px;margin-top:14px}
+.done,.back{flex:1;padding:12px;border-radius:14px;font-weight:900;border:none}
+.done{background:linear-gradient(135deg,#00ff9c,#00c853)}
+.back{background:linear-gradient(135deg,#2a2f45,#1b1f33);color:#cfe8ff}
+
+.whatsapp{
+  position:fixed;
+  right:16px;bottom:16px;
+  padding:12px 20px;
+  background:#25d366;
+  color:#000;
+  border-radius:40px;
+  font-weight:900;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<div id="plans">
+
+<div class="brand">
+  <span class="ahsan">CARDING</span><span class="cc"></span><span class="shop">SHOP</span>
+</div>
+<div class="tag">𝐏𝐎𝐖𝐄𝐑𝐄𝐃  𝐁𝐘 𝐀𝐇𝐒𝐀𝐍</div>
+
+<!-- BASIC -->
+<div class="plan basic">
+<div class="visa-badge">VISA</div><div class="available">AVAILABLE</div>
+<h3>BASIC PLAN</h3>
+<div class="price">₹999</div>
+<div class="balance">$80+ USD</div>
+<div class="card-info">
+<div class="visa-logo">VISA</div>
+<div class="card-number">4216 xxxx xxxx 8890</div>
+<div class="card-details"><span>CVV: 456</span><span>10/32</span></div>
+</div>
+<button class="pay btn-basic" onclick="openPay('BASIC PLAN',999)">PAY PAYMENT</button>
+</div>
+
+<!-- NORMAL -->
+<div class="plan normal">
+<div class="popular">MOST POPULAR</div>
+<div class="visa-badge">VISA</div><div class="available">AVAILABLE</div>
+<h3>NORMAL PLAN</h3>
+<div class="price">₹1,899</div>
+<div class="balance">$199+ USD</div>
+<div class="card-info">
+<div class="visa-logo">VISA</div>
+<div class="card-number">6129 xxxx xxxx 1078</div>
+<div class="card-details"><span>CVV: 123</span><span>12/34</span></div>
+</div>
+<button class="pay btn-normal" onclick="openPay('NORMAL PLAN',1899)">PAY PAYMENT</button>
+</div>
+
+<!-- PREMIUM -->
+<div class="plan premium">
+<div class="visa-badge">VISA</div><div class="available">AVAILABLE</div>
+<h3>PREMIUM PLAN</h3>
+<div class="price">₹2,999</div>
+<div class="balance">$399+ USD</div>
+<div class="card-info">
+<div class="visa-logo">VISA</div>
+<div class="card-number">4738 xxxx xxxx 9472</div>
+<div class="card-details"><span>CVV: 987</span><span>11/33</span></div>
+</div>
+<button class="pay btn-premium" onclick="openPay('PREMIUM PLAN',2999)">PAY PAYMENT</button>
+</div>
+
+<!-- VIP -->
+<div class="plan vip">
+<div class="vip-badge">VIP ACCESS</div>
+<div class="visa-badge">VISA</div><div class="available">AVAILABLE</div>
+<h3>VIP PLAN</h3>
+<div class="price">₹3,999</div>
+<div class="balance">$499+ USD</div>
+<div class="card-info">
+<div class="visa-logo">VISA</div>
+<div class="card-number">5588 xxxx xxxx 7721</div>
+<div class="card-details"><span>CVV: 669</span><span>09/35</span></div>
+</div>
+<button class="pay btn-vip" onclick="openPay('VIP PLAN',3999)">PAY PAYMENT</button>
+</div>
+
+<!-- LEGENDARY -->
+<div class="plan legendary">
+<div class="legendary-badge">LEGENDARY</div>
+<div class="visa-badge">VISA</div><div class="available">AVAILABLE</div>
+<h3>LEGENDARY PLAN</h3>
+<div class="price">₹5,999</div>
+<div class="balance">$899+ USD</div>
+<div class="card-info">
+<div class="visa-logo">VISA</div>
+<div class="card-number">4895 xxxx xxxx 6619</div>
+<div class="card-details"><span>CVV: 868</span><span>08/36</span></div>
+</div>
+<button class="pay btn-legendary" onclick="openPay('LEGENDARY PLAN',5999)">PAY PAYMENT</button>
+</div>
+
+<!-- MEGA -->
+<div class="plan mega">
+<div class="mega-badge">MEGA</div>
+<div class="visa-badge">VISA</div><div class="available">AVAILABLE</div>
+<h3>MEGA PLAN</h3>
+<div class="price">₹7,999</div>
+<div class="balance">$1199+ USD</div>
+<div class="card-info">
+<div class="visa-logo">VISA</div>
+<div class="card-number">4019 xxxx xxxx 9901</div>
+<div class="card-details"><span>CVV: 999</span><span>07/37</span></div>
+</div>
+<button class="pay btn-mega" onclick="openPay('MEGA PLAN',7999)">PAY PAYMENT</button>
+</div>
+
+<!-- MEGA PRO MAX -->
+<div class="plan mega-pro-max">
+<div class="mega-pro-max-badge">MEGA PRO MAX</div>
+<div class="visa-badge">VISA</div><div class="available">AVAILABLE</div>
+<h3>MEGA PRO MAX PLAN</h3>
+<div class="price">₹9,999</div>
+<div class="balance">$1799+ USD</div>
+<div class="card-info">
+<div class="visa-logo">VISA</div>
+<div class="card-number">4556 xxxx xxxx 8844</div>
+<div class="card-details"><span>CVV: 777</span><span>06/38</span></div>
+</div>
+<button class="pay btn-mega-pro-max" onclick="openPay('MEGA PRO MAX PLAN',9999)">PAY PAYMENT</button>
+</div>
+
+</div>
+
+<!-- PAYMENT SECTION (UPDATED ONLY HERE) -->
+<div id="payment">
+  <div class="pay-title" id="planName"></div>
+  <div class="pay-instruction">Scan & pay using the QR code below</div>
+
+  <div class="amount-box">Pay ₹<span id="amountText"></span></div>
+
+  <div class="pay-instruction">
+    UPI ID: <b id="upiText">ahsanzero9@ptyes</b>
+  </div>
+
+  <div class="timer" id="timer">05:00</div>
+  <div class="qr"><img id="qrImg"></div>
+
+  <div class="actions">
+    <button class="done" onclick="donePay()">PAYMENT DONE</button>
+    <button class="back" onclick="goBack()">GO BACK</button>
+  </div>
+</div>
+
+</div>
+
+<a class="whatsapp" href="https://wa.me/919163518564" target="_blank">WhatsApp</a>
+
+<script>
+let timerInterval,timeLeft;
+
+function openPay(plan,amount){
+  plans.style.display="none";
+  payment.style.display="block";
+  planName.innerText=plan;
+  amountText.innerText=amount;
+  qrImg.src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+
+   encodeURIComponent(`upi://pay?pa=ahsanzero9@ptyes&am=${amount}&cu=INR`);
+  startTimer();
+}
+
+function startTimer(){
+  clearInterval(timerInterval);
+  timeLeft=300;
+  timerInterval=setInterval(()=>{
+    let m=Math.floor(timeLeft/60),s=timeLeft%60;
+    timer.innerText=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    timeLeft--;
+  },1000);
+}
+
+function donePay(){
+  window.open("https://wa.me/919163518564","_blank");
+}
+
+function goBack(){
+  clearInterval(timerInterval);
+  payment.style.display="none";
+  plans.style.display="block";
+}
+</script>
+
+</body>
+</html>
